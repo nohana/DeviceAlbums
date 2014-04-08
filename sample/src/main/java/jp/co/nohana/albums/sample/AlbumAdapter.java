@@ -32,7 +32,7 @@ public class AlbumAdapter extends CursorAdapter {
         TextView albumName = (TextView) view.findViewById(R.id.label_album_name);
         BucketId bucketId = BucketId.from(cursor);
         if (bucketId.equals(FixedBucketIdFactory.CAMERA.getBucketId())) {
-            albumName.setText(FixedBucketIdFactory.CAMERA.getLocalizedDisplayName(context));
+            albumName.setText("C" + FixedBucketIdFactory.CAMERA.getLocalizedDisplayName(context));
         } else if (bucketId.equals(FixedBucketIdFactory.DOWNLOAD.getBucketId())) {
             albumName.setText(FixedBucketIdFactory.DOWNLOAD.getLocalizedDisplayName(context));
         } else if (bucketId.equals(FixedBucketIdFactory.EDITED_ONLINE_PHOTO.getBucketId())) {

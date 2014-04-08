@@ -46,9 +46,9 @@ public abstract class AbstractAlbumLoader extends CursorLoader {
     @Override
     public Cursor loadInBackground() {
         Cursor cursor = super.loadInBackground();
-        MatrixCursor prepend = new MatrixCursor(cursor.getColumnNames());
+        MatrixCursor prepend = new MatrixCursor(getProjection());
         onPrependDummy(prepend);
-        MatrixCursor append = new MatrixCursor(cursor.getColumnNames());
+        MatrixCursor append = new MatrixCursor(getProjection());
         onAppendDummy(append);
         return new MergeCursor(new Cursor[]{ prepend, cursor, append });
     }
