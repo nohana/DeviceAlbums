@@ -1,14 +1,14 @@
 <resources>
     <!-- The following localization strings come from AOSP Gallery App. -->
     <!-- The label for the folder contains pictures taken by the camera. [CHAR LIMIT=20]-->
-    <string name="folder_camera">Camera</string>
+    <string name="folder_camera">カメラ</string>
     <!-- The label for the folder contains downloaded pictures. [CHAR LIMIT=20]-->
-    <string name="folder_download">Download</string>
+    <string name="folder_download">ダウンロード</string>
     <!-- The label for the folder contains edited online pictures. [CHAR LIMIT=40]-->
-    <string name="folder_edited_online_photos">Edited Online Photos</string>
+    <string name="folder_edited_online_photos">編集済みのオンライン画像</string>
     <!-- The label for the folder contains pictures that was imported from an
          external camera. [CHAR LIMIT=20]-->
-    <string name="folder_imported">Imported</string>
+    <string name="folder_imported">インポート済み</string>
     <!-- The label for the folder contains screenshot images. [CHAR LIMIT=20]-->
-    <string name="folder_screenshot">Screenshot</string>
+    <string name="folder_screenshot">スクリーンショット</string>
 </resources>
