@@ -9,7 +9,8 @@ import android.provider.MediaStore;
 /**
  * Wrapper object of the bucket id that represents device album folder as identifiable.
  * @author KeithYokoma
- * @since 2014/04/08
+ * @since 1.0.0
+ * @version 1.0.0
  */
 @SuppressWarnings("unused") // public APIs
 public class BucketId implements Parcelable {
