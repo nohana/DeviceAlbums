@@ -13,7 +13,7 @@ import android.provider.MediaStore;
  * @version 1.0.0
  */
 @SuppressWarnings("unused") // public APIs
-public class BucketId implements Parcelable {
+public final class BucketId implements Parcelable {
     public static final Creator<BucketId> CREATOR = new Creator<BucketId>() {
         @Override
         public BucketId createFromParcel(Parcel source) {
