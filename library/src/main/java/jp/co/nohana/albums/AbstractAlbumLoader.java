@@ -14,7 +14,7 @@ import android.support.v4.content.CursorLoader;
  * @version 1.0.0
  */
 @SuppressWarnings("unused") // public APIs
-public abstract class AlbumLoader extends CursorLoader {
+public abstract class AbstractAlbumLoader extends CursorLoader {
     /*
      * Note: The following hacky SQL injection comes from AOSP Gallery app impl.
      *
@@ -28,24 +28,27 @@ public abstract class AlbumLoader extends CursorLoader {
      * // Note that because there is a ")" in the template, we use "(2" to match it. */
     private static final String BUCKET_GROUP_BY = "1) GROUP BY 1,(2";
     private static final String BUCKET_ORDER_BY = "MAX(datetaken) DESC";
-    private final String[] mProjection;
+    private static final String[] REQUIRED_PROJECTION = {
+            MediaStore.Images.Media.BUCKET_ID,
+            MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
+            MediaStore.Images.Media._ID
+    };
 
     /**
      *
      * @param context the loader context.
      * @param projection the projection of the result cursor.
      */
-    public AlbumLoader(Context context, String[] projection) {
-        super(context, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, BUCKET_GROUP_BY, null, BUCKET_ORDER_BY);
-        mProjection = projection;
+    public AbstractAlbumLoader(Context context, String[] projection) {
+        super(context, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, ArrayUtils.join(REQUIRED_PROJECTION, projection), BUCKET_GROUP_BY, null, BUCKET_ORDER_BY);
     }
 
     @Override
     public Cursor loadInBackground() {
         Cursor cursor = super.loadInBackground();
-        MatrixCursor prepend = new MatrixCursor(mProjection);
+        MatrixCursor prepend = new MatrixCursor(cursor.getColumnNames());
         onPrependDummy(prepend);
-        MatrixCursor append = new MatrixCursor(mProjection);
+        MatrixCursor append = new MatrixCursor(cursor.getColumnNames());
         onAppendDummy(append);
         return new MergeCursor(new Cursor[]{ prepend, cursor, append });
     }
